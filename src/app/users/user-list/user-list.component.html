@@ -1,0 +1,63 @@
+<div class="row" class="row-content-search">
+  <div class="col-md-12">
+    <form>
+    <mat-card class="my-4">
+      <span>
+        <h3>
+          USER LIST
+        </h3>
+      </span>
+    </mat-card>
+    <mat-card class="mt-4">
+      <div class="form-row">
+        <div class="form-group col-md-12 ">
+          <button type="button" class="btn btn-success mx-2" (click)="newUser()">
+            New user
+            <i class="material-icons align-middle">
+              add
+            </i>
+          </button>
+          <table class="table">
+            <thead>
+              <tr class="d-flex">
+                <th class="col-md-2 align-items-center" scope="col">Avatar</th>
+                <th class="col-md-2 align-items-center" scope="col">First Name</th>
+                <th class="col-md-3 align-items-center" scope="col">Last Name</th>
+                <th class="col-md-3 align-items-center" scope="col">Email</th>
+                <th class="col-md-2 align-items-center justify-content-center" scope="col">
+                    Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngIf="userList">
+              <tr *ngFor="let user of userList" class="d-flex">
+                <td class="col-md-2"><img [src]="user.avatar"></td>
+                <td class="col-md-2">{{user.first_name}}</td>
+                <td class="col-md-3">{{user.last_name}}</td>
+                <td class="col-md-3">{{user.email}}</td>
+                <td class="col-md-2 d-flex align-items-center justify-content-center">
+                  <button type="button" class="btn btn-info mx-2" (click)="edit(user)">
+                    <i class="material-icons align-middle">
+                      edit
+                    </i>
+                  </button>
+                  <button type="button" class="btn btn-danger mx-2" (click)="delete(user)">
+                    <i class="material-icons align-middle">
+                      delete
+                    </i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <mat-paginator [length]="total"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              (page)="handleChangePage($event)">
+          </mat-paginator>
+        </div>
+      </div>
+      </mat-card>
+    </form>
+  </div>
+</div>

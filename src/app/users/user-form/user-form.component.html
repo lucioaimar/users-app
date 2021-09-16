@@ -1,0 +1,39 @@
+
+<mat-card class="m-4">
+  <span>
+    <h3 *ngIf="formState === 1">
+      New User
+    </h3>
+    <h3 *ngIf="formState === 2">
+      Edit User
+    </h3>
+  </span>
+</mat-card>
+<mat-card class="m-4">
+  <form *ngIf="user" class="example-form" [formGroup]="userForm">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input type="text" matInput placeholder="Ex. Pizza" formControlName="first_name">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input type="text" matInput placeholder="Ex. Pizza" formControlName="last_name">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput placeholder="Ex. Pizza" formControlName="email">
+    </mat-form-field>
+    <button *ngIf="formState === 2" type="button" class="btn btn-outline-primary mx-2 w-25" (click)="update()">
+      <i class="material-icons align-middle">
+        save
+      </i>
+      Update
+    </button>
+    <button *ngIf="formState === 1" type="button" class="btn btn-outline-primary mx-2 w-25" (click)="register()">
+      <i class="material-icons align-middle">
+        save
+      </i>
+      New
+    </button>
+  </form>
+</mat-card>
